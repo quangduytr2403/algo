@@ -1,30 +1,19 @@
-import java.util.LinkedList;
-import java.util.Queue;
+class Solution {
+    public int countSubstrings(String s) {
+        boolean[][] pl = new boolean[s.length()][s.length()];
+        int res = 0;
 
-public class Solution {
-    public int numSquares(int n) {
-        int[] trace = new int[100005];
-
-        Queue<Integer> qu = new LinkedList<>();
-        qu.add(0);
-
-        while(!qu.isEmpty()) {
-            int tmp =qu.remove();
-            if(tmp == n) break;
-
-            for(int i = 1;  i <= (int)Math.sqrt(n - tmp); i++) {
-                if(trace[tmp + i * i] == 0) {
-                    trace[tmp + i * i] = trace[tmp] + 1;
-                    qu.add(tmp + i * i);
+        for (int i = s.length() - 1; i >= 0; i--) {
+            for (int j = i; j < s.length(); j++) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    if (i == j || j - i == 1 || pl[i + 1][j - 1]) {
+                        pl[i][j] = true;
+                        res++;
+                    }
                 }
             }
         }
 
-        return trace[n];
-    }
-
-    public static void main(String[] args) {
-        Solution s = new Solution();
-        System.out.println(s.numSquares(10));
+        return res;
     }
 }
