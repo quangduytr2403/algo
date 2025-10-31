@@ -77,8 +77,8 @@ class SegmentTree {
     }
 
     int[] queryUtil(int start, int end, int l, int r, int node) {
-        if (r < start || end < l) return new int[]{Integer.MAX_VALUE, -1};
-        if (l <= start && end <= r) return new int[]{treeVal[node], treeIdx[node]};
+        if (r < start || end < l) return new int[]{Integer.MAX_VALUE, -1}; // not intersect
+        if (l <= start && end <= r) return new int[]{treeVal[node], treeIdx[node]}; // inside
         int mid = (start + end) / 2;
 
         int[] left = queryUtil(start, mid, l, r, node * 2);
