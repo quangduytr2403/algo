@@ -12,7 +12,7 @@ class Solution {
         for (int i = score.length - 1; i >= 0; i--) {
             if (i == score.length - 1) {
                 res[m.get(score[i])] = "Gold Medal";
-            } else if (i == score.length - 2) {
+            } else if (i == score.length - 2)
                 res[m.get(score[i])] = "Silver Medal";
             } else if (i == score.length - 3) {
                 res[m.get(score[i])] = "Bronze Medal";
